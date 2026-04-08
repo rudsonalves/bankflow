@@ -1,5 +1,64 @@
 # Changelog
 
+## 2026/04/08 — feat/http-core-module-02
+
+Refines the initial Flutter client shell to better support the project’s role as a controlled integration surface for the banking API, while also bringing the iOS workspace into a consistent CocoaPods-managed state. This change improves the project presentation, removes demo-oriented UI leftovers, and prepares the mobile layer for a cleaner HTTP core evolution aligned with the backend architecture and REST contract. 
+
+### 1. Documentation and project positioning
+
+* Reworked `README.md` to present **BankFlow** as a validation client for a custom banking API rather than a generic Flutter demo
+* Clarified the project purpose around:
+
+  * end-to-end validation of financial workflows
+  * client/backend contract consistency
+  * integration boundaries
+  * transaction safety
+* Added a more precise architectural framing for the mobile app as part of the broader system design effort
+* Improved the motivation and scope sections to better reflect the engineering focus of the project
+* Moved the license section to the end and simplified its wording
+
+### 2. Flutter app bootstrap cleanup
+
+* Simplified `MainApp` by removing the obsolete demo title parameter from the home screen instantiation
+* Kept the application entry point leaner and closer to the real project intent, instead of Flutter template defaults
+
+### 3. Home page simplification
+
+* Removed the default counter-based demo behavior from `HomePage`
+* Eliminated:
+
+  * `title` parameter
+  * internal counter state
+  * increment action
+  * floating action button
+  * demo-specific text rendering
+* Replaced the old template structure with a cleaner and more neutral home screen scaffold
+* Corrected enum usage from shorthand syntax to explicit `MainAxisAlignment.center`, which is technically clearer and more idiomatic for maintainable code
+
+### 4. iOS CocoaPods and workspace integration
+
+* Added `ios/Podfile.lock` to capture the current CocoaPods dependency state
+* Updated `Runner.xcodeproj` to include:
+
+  * Pods framework references
+  * Pods xcconfig references
+  * manifest lock check phases
+  * embed frameworks phase
+  * test target Pods integration
+* Updated `Runner.xcworkspace` to include `Pods/Pods.xcodeproj`
+* These changes indicate the iOS side is now aligned with a proper CocoaPods-managed workspace structure, which is important for plugin stability and deterministic local builds
+
+### 5. Architectural significance
+
+* This commit is small in visible feature scope, but strategically relevant
+* It removes noise inherited from the Flutter template and makes the mobile app more compatible with its intended role inside a layered system, where the client should act as a predictable integration surface rather than a sandbox demo
+* That direction is coherent with the backend architectural model centered on layered boundaries and controlled execution flow, as documented in the project architecture and REST contract references  
+
+### Conclusion
+
+This commit cleans the client foundation, improves project documentation, and stabilizes the iOS workspace configuration. The result is a more intentional mobile base, better aligned with the project’s real objective: serving as a structured frontend for validating HTTP flows and backend behavior rather than remaining tied to Flutter’s default starter template.
+
+
 ## 2026/04/08 — feat/http-core-module-01
 
 Introduces a **core HTTP module standardization** with unified error modeling, improved result handling, and a more robust command execution pattern. This refactor significantly improves consistency, testability, and alignment with layered architecture principles 

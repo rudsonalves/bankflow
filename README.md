@@ -1,55 +1,67 @@
-
 # BankFlow
 
-BankFlow is a mobile application built with Flutter designed to consume and validate the capabilities of a custom Bank API.
+BankFlow is a Flutter mobile application designed to validate and exercise a custom-built banking API.
 
-This project is part of a broader study focused on backend architecture, financial domain modeling, and secure transaction flows. The mobile app acts as a client layer to simulate real-world usage scenarios, enabling end-to-end validation of the system.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+Rather than a feature-driven product, this application acts as a controlled client environment to simulate real-world financial workflows and validate end-to-end system behavior.
 
 ## Purpose
 
-The primary goals of this project are:
+This project is part of a broader effort to explore system design across mobile and backend layers, with a focus on:
 
-- Validate a modular Bank API built in Go
-- Simulate real user interactions with financial operations
-- Explore secure transaction flows and authorization strategies
-- Evaluate architectural decisions across client and backend layers
+- End-to-end validation of financial operations
+- Consistency between client behavior and backend guarantees
+- API contract design and integration boundaries
+- Execution context and transaction safety
 
 ## Scope
 
-The application focuses on:
+The application includes:
 
-- User authentication (JWT-based)
-- Account creation and management
+- JWT-based authentication
+- Account creation and lifecycle management
 - Financial operations (deposit, withdraw, transfer)
-- Transaction history (statement with pagination)
+- Transaction history with cursor-based pagination
 - Integration with a strongly consistent backend
 
-## Architecture Context
+## Architectural Role
 
-The backend follows a layered modular architecture:
+This application is not treated as an isolated frontend.
+
+It is designed to:
+
+- Validate backend assumptions through real usage flows
+- Expose inconsistencies in API design and data contracts
+- Ensure alignment between user interaction and backend behavior
+
+The mobile layer is intentionally structured to reflect production concerns such as:
+
+- Clear separation between UI, state, and business logic
+- Predictable data flow across layers
+- Explicit handling of asynchronous operations and failures
+
+## Backend Context
+
+The backend (Go) follows a layered architecture:
 
 - Domain-driven design principles
-- Application layer for use cases and transaction control
-- Infrastructure for persistence (PostgreSQL)
-- Delivery via REST API
-
-See architecture details: :contentReference[oaicite:0]{index=0}
-
-API contract: :contentReference[oaicite:1]{index=1}
+- Application layer for use case orchestration
+- Infrastructure layer (PostgreSQL)
+- Delivery via REST APIs
 
 ## Motivation
 
 This project was created to:
 
-- Revisit Go development after several years
-- Explore backend design decisions not fully addressed in previous professional experiences
-- Build a complete system (backend + mobile client) with controlled architectural evolution
+- Revisit Go development in a structured way
+- Explore backend design decisions beyond prior production constraints
+- Build and evolve a complete system (backend + mobile) with full control over architectural decisions
 
 ## Notes
 
-- This is a study project and not intended for production use
-- Focus is on correctness, structure, and learning—not feature completeness
+- This is an engineering-focused project, not a production product
+- Emphasis is placed on correctness, consistency, and system design
+- Features are intentionally limited to maintain focus on architectural validation
+
+## License
+
+MIT License — see the LICENSE file for details
